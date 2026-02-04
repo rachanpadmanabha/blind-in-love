@@ -1,0 +1,162 @@
+/* 3D falling hearts – chocolate rains style – Valentine palette */
+
+.chocolate-rains-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0d0510 0%, #1a0a14 40%, #160812 100%);
+  pointer-events: none;
+}
+
+#chocolate_rains {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1300px;
+  transform: rotateX(-15deg);
+  transform-style: preserve-3d;
+}
+
+.chocolate-rains-wrap .heart {
+  position: absolute;
+  transform-style: preserve-3d;
+  top: 50%;
+  left: 50%;
+}
+
+.chocolate-rains-wrap .heart .ring {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -150px;
+  border-radius: 100%;
+  opacity: 0;
+  border: 1px solid rgba(255, 45, 106, 0.65);
+  animation: heart-wave 5000ms ease-out infinite;
+  animation-delay: var(--wave-delay, 0ms);
+  transform: translate(-50%, -50%) rotateX(90deg) scale(0) translateZ(-37px);
+  transform-origin: center center;
+}
+
+.chocolate-rains-wrap .heart .inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  animation: heart-rotation var(--rotation-duration, 3500ms) linear infinite;
+}
+
+.chocolate-rains-wrap .heart .regular,
+.chocolate-rains-wrap .heart .reverse {
+  position: absolute;
+  left: -150px;
+  top: -150px;
+  width: 300px;
+  height: 300px;
+}
+
+.chocolate-rains-wrap .heart .reverse {
+  transform: translateY(70px) rotateZ(180deg);
+  opacity: 0.12;
+}
+
+.chocolate-rains-wrap .heart .reverse .left,
+.chocolate-rains-wrap .heart .reverse .right {
+  opacity: 0.5;
+}
+
+.chocolate-rains-wrap .heart .movable {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  margin-top: -20px;
+  opacity: 0;
+  animation: heart-drop 5000ms linear infinite;
+  animation-delay: var(--drop-delay, 0ms);
+}
+
+.chocolate-rains-wrap .heart .left,
+.chocolate-rains-wrap .heart .right {
+  position: absolute;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  background: var(--heart-color, #e91e63);
+  border-radius: 100%;
+}
+
+.chocolate-rains-wrap .heart .left {
+  left: -20px;
+  transform-origin: 100% 0;
+}
+
+.chocolate-rains-wrap .heart .left::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 20px;
+  height: 25px;
+  background: var(--heart-color, #e91e63);
+  border-radius: 0 0 0 100%;
+}
+
+.chocolate-rains-wrap .heart .right {
+  left: 0;
+  transform-origin: 0 0;
+}
+
+.chocolate-rains-wrap .heart .right::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 20px;
+  height: 25px;
+  background: var(--heart-color, #e91e63);
+  border-radius: 0 0 100% 0;
+}
+
+@keyframes heart-drop {
+  0% {
+    transform: translate(-50%, -50%) translateY(-1000px);
+    opacity: 0;
+  }
+  80% {
+    transform: translate(-50%, -50%) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(-40px);
+    opacity: 0;
+  }
+}
+
+@keyframes heart-wave {
+  0% {
+    transform: translate(-50%, -50%) rotateX(90deg) scale(0) translateZ(-37px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateX(90deg) scale(2) translateZ(-37px);
+    opacity: 0;
+  }
+}
+
+@keyframes heart-rotation {
+  0% {
+    transform: translate(-50%, -50%) rotateY(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateY(360deg);
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Blind in Love – Will you be my Valentine?",
+  "short_name": "Blind in Love",
+  "description": "A Valentine's surprise made with love",
+  "theme_color": "#1a0a0f",
+  "background_color": "#1a0a0f",
+  "display": "standalone",
+  "start_url": "/",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

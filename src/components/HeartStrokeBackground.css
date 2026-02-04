@@ -1,0 +1,41 @@
+/* Stroked hearts background – full bleed, no overflow on this layer */
+.heart-stroke-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  pointer-events: none;
+}
+
+.heart-stroke-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heart-stroke-bg use {
+  fill: none;
+  stroke-width: 45;
+  stroke-dasharray: 1180;
+  clip-path: url(#heart-stroke-clip);
+  mask: url(#heart-stroke-mask);
+  animation: heart-stroke-draw 10s ease-in-out infinite;
+}
+
+@keyframes heart-stroke-draw {
+  0% {
+    stroke-dashoffset: -1180;
+  }
+  35%,
+  65% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 1180;
+  }
+}
