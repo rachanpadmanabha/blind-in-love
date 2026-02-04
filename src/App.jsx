@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef } from 'react'
-import {  AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import './App.css'
 import { NAMES } from './config'
 import { Heart, ArrowDown, Lock, Flower2 } from 'lucide-react'
